@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    @apply scroll-pt-20;
+  }
+  
+  body {
+    @apply bg-earth-100 text-earth-900 font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-md font-medium transition-all duration-300 text-center;
+  }
+  
+  .btn-primary {
+    @apply bg-terracotta-500 text-white hover:bg-terracotta-600 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-secondary {
+    @apply bg-spirit-500 text-white hover:bg-spirit-600 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-terracotta-500 text-terracotta-500 hover:bg-terracotta-500 hover:text-white shadow-lg hover:shadow-xl;
+  }
+  
+  .section-title {
+    @apply text-4xl sm:text-5xl font-bold mb-6 sm:mb-10 text-earth-800 relative inline-block;
+  }
+  
+  .section-title::after {
+    @apply content-[''] absolute -bottom-4 left-0 w-3/4 h-1 bg-terracotta-500 rounded-full;
+  }
+  
+  .section-padding {
+    @apply py-20 sm:py-32;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl border border-earth-200/50;
+  }
+
+  .animate-bounce-slow {
+    animation: bounce 2s infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s infinite;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
