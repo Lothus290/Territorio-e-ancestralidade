@@ -17,6 +17,10 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
   }
+
+  img {
+    @apply max-w-full h-auto;
+  }
 }
 
 @layer components {
@@ -37,7 +41,7 @@
   }
   
   .section-title {
-    @apply text-4xl sm:text-5xl font-bold mb-6 sm:mb-10 text-earth-800 relative inline-block;
+    @apply text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-10 text-earth-800 relative inline-block;
   }
   
   .section-title::after {
@@ -45,7 +49,7 @@
   }
   
   .section-padding {
-    @apply py-20 sm:py-32;
+    @apply py-16 sm:py-20 md:py-32;
   }
   
   .card {
@@ -58,6 +62,20 @@
 
   .animate-pulse-slow {
     animation: pulse 3s infinite;
+  }
+
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 }
 
@@ -78,5 +96,16 @@
   }
   50% {
     opacity: 0.4;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

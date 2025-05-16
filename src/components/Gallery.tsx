@@ -15,42 +15,42 @@ const Gallery: React.FC = () => {
   
   const images: GalleryImage[] = [
     {
-      url: "https://images.pexels.com/photos/1058401/pexels-photo-1058401.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      url: "https://images.pexels.com/photos/1058401/pexels-photo-1058401.jpeg",
       title: "Tradições Manuais",
       location: "Comunidade Artesã do Norte"
     },
     {
-      url: "https://images.pexels.com/photos/5253695/pexels-photo-5253695.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      url: "https://images.pexels.com/photos/5253695/pexels-photo-5253695.jpeg",
       title: "Plantio Ancestral",
       location: "Vale do Ribeira"
     },
     {
-      url: "https://images.pexels.com/photos/6040190/pexels-photo-6040190.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      url: "https://images.pexels.com/photos/6040190/pexels-photo-6040190.jpeg",
       title: "Territórios Sagrados",
       location: "Serra da Mantiqueira"
     },
     {
-      url: "https://images.pexels.com/photos/2746181/pexels-photo-2746181.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      url: "https://images.pexels.com/photos/2746181/pexels-photo-2746181.jpeg",
       title: "Celebração da Colheita",
       location: "Planície Central"
     },
     {
-      url: "https://images.pexels.com/photos/3764014/pexels-photo-3764014.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      url: "https://images.pexels.com/photos/3764014/pexels-photo-3764014.jpeg",
       title: "Paisagem Ancestral",
       location: "Chapada dos Veadeiros"
     },
     {
-      url: "https://images.pexels.com/photos/2646531/pexels-photo-2646531.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      url: "https://images.pexels.com/photos/2646531/pexels-photo-2646531.jpeg",
       title: "Conexão Espiritual",
       location: "Floresta Amazônica"
     },
     {
-      url: "https://images.pexels.com/photos/14839342/pexels-photo-14839342.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      url: "https://images.pexels.com/photos/14839342/pexels-photo-14839342.jpeg",
       title: "Preparando Alimentos Tradicionais",
       location: "Comunidade Quilombola"
     },
     {
-      url: "https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      url: "https://images.pexels.com/photos/15286/pexels-photo.jpg",
       title: "Caminhos Ancestrais",
       location: "Cordilheira do Sul"
     }
@@ -77,7 +77,7 @@ const Gallery: React.FC = () => {
           Galeria de Territórios
         </h2>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {images.map((image, index) => (
             <div 
               key={index}
@@ -91,12 +91,14 @@ const Gallery: React.FC = () => {
                   src={image.url} 
                   alt={image.title}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-earth-900 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <h3 className="text-lg font-bold">{image.title}</h3>
-                  <p className="text-sm text-earth-100">{image.location}</p>
+                <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-4 text-white">
+                  <h3 className="text-sm sm:text-lg font-bold line-clamp-1">{image.title}</h3>
+                  <p className="text-xs sm:text-sm text-earth-100 line-clamp-1">{image.location}</p>
                 </div>
               </div>
             </div>
@@ -111,11 +113,11 @@ const Gallery: React.FC = () => {
           onClick={closeImage}
         >
           <div 
-            className="relative max-w-4xl max-h-[90vh] w-full animate-fade-in"
+            className="relative max-w-4xl w-full animate-fade-in"
             onClick={(e) => e.stopPropagation()}
           >
             <button 
-              className="absolute top-4 right-4 z-10 bg-earth-900 bg-opacity-50 rounded-full p-2 text-white hover:bg-terracotta-500 transition-colors"
+              className="absolute -top-12 right-0 z-10 bg-earth-900 bg-opacity-50 rounded-full p-2 text-white hover:bg-terracotta-500 transition-colors"
               onClick={closeImage}
             >
               <X className="h-6 w-6" />
@@ -123,9 +125,10 @@ const Gallery: React.FC = () => {
             <img 
               src={selectedImage.url} 
               alt={selectedImage.title}
-              className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+              className="w-full h-auto rounded-lg"
+              loading="eager"
             />
-            <div className="bg-earth-800 p-4 rounded-b-lg">
+            <div className="bg-earth-800 p-4 rounded-b-lg mt-2">
               <h3 className="text-xl font-bold text-white">{selectedImage.title}</h3>
               <p className="text-earth-200">{selectedImage.location}</p>
             </div>
